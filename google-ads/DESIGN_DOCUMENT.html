@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DESIGN_DOCUMENT</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="agentss-ai---google-ads-api-tool-design-document">Agentss AI -
+Google Ads API Tool Design Document</h1>
+<p><strong>Company:</strong> Agentss AI <strong>Website:</strong>
+https://agentss.ai <strong>Document Version:</strong> 1.0
+<strong>Date:</strong> January 5, 2026</p>
+<hr />
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>Agentss AI is developing an internal advertising management tool
+called “Ads Command Center” to consolidate campaign management and
+conversion tracking across multiple advertising platforms, including
+Google Ads.</p>
+<p>This document describes the design and intended use of the Google Ads
+API integration.</p>
+<hr />
+<h2 id="company-overview">2. Company Overview</h2>
+<p><strong>Business Model:</strong> B2B SaaS platform providing
+AI-powered lead generation and sales automation tools.</p>
+<p><strong>Use of Google Ads:</strong> We run Google Ads campaigns to
+acquire customers for our platform, including: - Search campaigns
+targeting businesses seeking lead generation solutions - Display
+campaigns for brand awareness - Remarketing campaigns for website
+visitors</p>
+<p><strong>API Usage Type:</strong> Internal tool for our own
+advertising management (not an agency tool).</p>
+<hr />
+<h2 id="tool-overview">3. Tool Overview</h2>
+<h3 id="tool-name">3.1 Tool Name</h3>
+<p>Agentss Ads Command Center</p>
+<h3 id="purpose">3.2 Purpose</h3>
+<p>Provide a unified dashboard for our marketing team to: 1. Monitor
+campaign performance across Google Ads and other platforms 2. Track and
+report on advertising ROI 3. Send offline conversion data to improve
+campaign optimization 4. Automate routine campaign management tasks</p>
+<h3 id="users">3.3 Users</h3>
+<ul>
+<li>Internal marketing team members only</li>
+<li>Estimated 3-5 users</li>
+<li>No external/client access</li>
+</ul>
+<hr />
+<h2 id="google-ads-api-usage">4. Google Ads API Usage</h2>
+<h3 id="api-services-required">4.1 API Services Required</h3>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 31%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Service</th>
+<th>Purpose</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GoogleAdsService</td>
+<td>Query campaign, ad group, and ad performance data</td>
+<td>Daily/On-demand</td>
+</tr>
+<tr>
+<td>ConversionUploadService</td>
+<td>Upload offline conversions (demo bookings, purchases)</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td>CampaignService</td>
+<td>Read campaign settings and status</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>CustomerService</td>
+<td>Retrieve account information</td>
+<td>On startup</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-flow-diagram">4.2 Data Flow Diagram</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                    AGENTSS ADS COMMAND CENTER                   │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              │ OAuth 2.0 Authentication
+                              │ (Refresh Token Flow)
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      GOOGLE ADS API v18                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌────────────┐ │
+│  │ GoogleAdsService│    │ConversionUpload │    │ Campaign   │ │
+│  │                 │    │    Service      │    │  Service   │ │
+│  │ - Search queries│    │                 │    │            │ │
+│  │ - GAQL support  │    │ - Click conv.   │    │ - Status   │ │
+│  │ - Reporting     │    │ - Call conv.    │    │ - Settings │ │
+│  └─────────────────┘    └─────────────────┘    └────────────┘ │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    GOOGLE ADS ACCOUNT                           │
+│                  Customer ID: 901-172-6337                      │
+│                  (Under MCC: 983-707-4158)                      │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="authentication-method">4.3 Authentication Method</h3>
+<p>We use OAuth 2.0 with offline refresh tokens:</p>
+<ol type="1">
+<li>Initial authorization via Google OAuth consent screen</li>
+<li>Store refresh token securely in environment variables</li>
+<li>Exchange refresh token for access token on each API session</li>
+<li>Access token used for API calls (1-hour validity)</li>
+</ol>
+<p><strong>Security measures:</strong> - Refresh tokens stored in
+encrypted environment variables - Never committed to version control
+(.gitignore) - Access limited to authorized team members only</p>
+<hr />
+<h2 id="feature-specifications">5. Feature Specifications</h2>
+<h3 id="campaign-performance-dashboard">5.1 Campaign Performance
+Dashboard</h3>
+<p><strong>Purpose:</strong> Display real-time campaign metrics in
+unified view</p>
+<p><strong>API Calls:</strong></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  campaign.name,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  campaign.status,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  metrics.impressions,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  metrics.clicks,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  metrics.cost_micros,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  metrics.conversions,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  metrics.conversions_value</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> campaign</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> segments.<span class="dt">date</span> DURING LAST_30_DAYS</span></code></pre></div>
+<p><strong>Frequency:</strong> On-demand (user-initiated) + daily
+automated sync</p>
+<h3 id="offline-conversion-upload">5.2 Offline Conversion Upload</h3>
+<p><strong>Purpose:</strong> Send conversion data from our CRM to Google
+Ads for optimization</p>
+<p><strong>Use Case:</strong> When a user from a Google Ad clicks
+through and later: - Books a demo (conversion) - Becomes a paying
+customer (conversion with value)</p>
+<p><strong>Data Flow:</strong> 1. User clicks Google Ad → lands on
+agentss.ai 2. GCLID captured and stored with user record 3. User books
+demo or purchases subscription 4. Conversion sent to Google Ads API with
+GCLID</p>
+<p><strong>API Call Example:</strong></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// ConversionUploadService</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uploadClickConversions</span>({</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">customerId</span><span class="op">:</span> <span class="st">&quot;9011726337&quot;</span><span class="op">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">conversions</span><span class="op">:</span> [{</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">gclid</span><span class="op">:</span> <span class="st">&quot;user_gclid_from_click&quot;</span><span class="op">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">conversionAction</span><span class="op">:</span> <span class="st">&quot;customers/9011726337/conversionActions/123456&quot;</span><span class="op">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">conversionDateTime</span><span class="op">:</span> <span class="st">&quot;2026-01-05 12:00:00-05:00&quot;</span><span class="op">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">conversionValue</span><span class="op">:</span> <span class="fl">99.00</span><span class="op">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">currencyCode</span><span class="op">:</span> <span class="st">&quot;USD&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  }]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h3 id="automated-reporting">5.3 Automated Reporting</h3>
+<p><strong>Purpose:</strong> Generate weekly performance summaries</p>
+<p><strong>Frequency:</strong> Weekly (Sunday midnight)</p>
+<p><strong>Output:</strong> Email report to marketing team with key
+metrics</p>
+<hr />
+<h2 id="rate-limiting-best-practices">6. Rate Limiting &amp; Best
+Practices</h2>
+<h3 id="request-volume-estimates">6.1 Request Volume Estimates</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Estimated Daily Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign queries</td>
+<td>50-100 requests</td>
+</tr>
+<tr>
+<td>Conversion uploads</td>
+<td>10-50 requests</td>
+</tr>
+<tr>
+<td>Account info queries</td>
+<td>5-10 requests</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~150 requests/day</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rate-limit-compliance">6.2 Rate Limit Compliance</h3>
+<ul>
+<li>Implement exponential backoff for rate limit errors</li>
+<li>Cache campaign data locally (15-minute TTL)</li>
+<li>Batch conversion uploads where possible</li>
+<li>Use pageToken for paginated results</li>
+</ul>
+<h3 id="error-handling">6.3 Error Handling</h3>
+<ul>
+<li>Log all API errors with full context</li>
+<li>Retry transient errors (5xx, RESOURCE_EXHAUSTED)</li>
+<li>Alert on authentication failures</li>
+<li>Queue failed conversions for retry</li>
+</ul>
+<hr />
+<h2 id="data-storage-privacy">7. Data Storage &amp; Privacy</h2>
+<h3 id="data-stored">7.1 Data Stored</h3>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Storage Location</th>
+<th>Retention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign metrics</td>
+<td>Local database</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td>Conversion events</td>
+<td>Local database</td>
+<td>1 year</td>
+</tr>
+<tr>
+<td>API credentials</td>
+<td>Environment vars</td>
+<td>Permanent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="privacy-compliance">7.2 Privacy Compliance</h3>
+<ul>
+<li>No PII stored from Google Ads data</li>
+<li>Conversion data uses GCLIDs only (no email/phone)</li>
+<li>Data access restricted to authorized personnel</li>
+<li>Compliant with Google Ads data policies</li>
+</ul>
+<hr />
+<h2 id="technical-architecture">8. Technical Architecture</h2>
+<h3 id="technology-stack">8.1 Technology Stack</h3>
+<ul>
+<li><strong>Language:</strong> JavaScript (Node.js)</li>
+<li><strong>API Library:</strong> google-ads-api (npm package)</li>
+<li><strong>Authentication:</strong> googleapis OAuth2 client</li>
+<li><strong>Data Storage:</strong> PostgreSQL (for caching)</li>
+<li><strong>Hosting:</strong> Internal servers / Vercel</li>
+</ul>
+<h3 id="code-structure">8.2 Code Structure</h3>
+<pre><code>agentss-ads-command-center/
+├── .env                    # API credentials (not in git)
+├── google-ads/
+│   ├── api.sh             # Shell helper for GAQL queries
+│   ├── list-campaigns.sh  # Campaign listing script
+│   └── send-conversion.sh # Conversion upload script
+├── command-center/
+│   └── src/
+│       └── platforms/
+│           └── google.js  # Google Ads API client
+└── package.json</code></pre>
+<hr />
+<h2 id="compliance-terms">9. Compliance &amp; Terms</h2>
+<h3 id="terms-acknowledgment">9.1 Terms Acknowledgment</h3>
+<p>We acknowledge and agree to: - Google Ads API Terms and Conditions -
+Google Ads API Rate Limits - Required Minimum Functionality (RMF) - Data
+handling and privacy requirements</p>
+<h3 id="use-case-compliance">9.2 Use Case Compliance</h3>
+<p>Our use case falls under: - <strong>Internal Tool:</strong> Used by
+our own marketing team - <strong>Conversion Tracking:</strong> Uploading
+our own conversion data - <strong>Reporting:</strong> Generating reports
+for our own campaigns</p>
+<p>We are NOT: - Building an agency tool for clients - Reselling API
+access - Automating ad creation at scale</p>
+<hr />
+<h2 id="contact-information">10. Contact Information</h2>
+<p><strong>Company:</strong> Agentss AI <strong>Primary
+Contact:</strong> Eimri Bar <strong>Email:</strong> eimrib@yess.ai
+<strong>Website:</strong> https://agentss.ai</p>
+<hr />
+<p><em>Document prepared for Google Ads API Token Application</em>
+<em>January 2026</em></p>
+</body>
+</html>

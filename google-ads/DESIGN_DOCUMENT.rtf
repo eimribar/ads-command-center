@@ -1,0 +1,535 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fmodern\fcharset0 Courier;\f4\fnil\fcharset0 Menlo-Bold;\f5\fnil\fcharset0 Menlo-Italic;
+\f6\froman\fcharset0 Times-Italic;}
+{\colortbl;\red255\green255\blue255;\red20\green20\blue20;\red109\green109\blue109;\red12\green95\blue24;
+\red124\green19\blue2;\red79\green143\blue160;\red8\green25\blue107;\red83\green83\blue83;\red50\green91\blue142;
+\red53\green145\blue93;}
+{\*\expandedcolortbl;;\cssrgb\c10196\c10196\c10196;\cssrgb\c50196\c50196\c50196;\cssrgb\c0\c43922\c12549;
+\cssrgb\c56471\c12549\c0;\cssrgb\c37647\c62745\c69020;\cssrgb\c2353\c15686\c49412;\cssrgb\c40000\c40000\c40000;\cssrgb\c25098\c43922\c62745;
+\cssrgb\c25098\c62745\c43922;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\deftab720
+\pard\pardeftab720\sa321\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Agentss AI - Google Ads API Tool Design Document\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Company:
+\f1\b0  Agentss AI 
+\f0\b Website:
+\f1\b0  https://agentss.ai 
+\f0\b Document Version:
+\f1\b0  1.0 
+\f0\b Date:
+\f1\b0  January 5, 2026\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 1. Executive Summary\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f1\b0\fs24 \cf2 Agentss AI is developing an internal advertising management tool called \'93Ads Command Center\'94 to consolidate campaign management and conversion tracking across multiple advertising platforms, including Google Ads.\
+This document describes the design and intended use of the Google Ads API integration.\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 2. Company Overview\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Business Model:
+\f1\b0  B2B SaaS platform providing AI-powered lead generation and sales automation tools.\
+
+\f0\b Use of Google Ads:
+\f1\b0  We run Google Ads campaigns to acquire customers for our platform, including: - Search campaigns targeting businesses seeking lead generation solutions - Display campaigns for brand awareness - Remarketing campaigns for website visitors\
+
+\f0\b API Usage Type:
+\f1\b0  Internal tool for our own advertising management (not an agency tool).\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 3. Tool Overview\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 3.1 Tool Name\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f1\b0\fs24 \cf2 Agentss Ads Command Center\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 3.2 Purpose\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f1\b0\fs24 \cf2 Provide a unified dashboard for our marketing team to: 1. Monitor campaign performance across Google Ads and other platforms 2. Track and report on advertising ROI 3. Send offline conversion data to improve campaign optimization 4. Automate routine campaign management tasks\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 3.3 Users\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\parhyphenfactor20\partightenfactor0
+\ls1\ilvl0
+\f1\b0\fs24 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Internal marketing team members only\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Estimated 3-5 users\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No external/client access\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 4. Google Ads API Usage\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 4.1 API Services Required\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2532\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2435\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth2952\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Service\cell 
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+\cf2 Purpose\cell 
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+\cf2 Frequency\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2532\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2435\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth2952\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1\b0 \cf2 GoogleAdsService\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Query campaign, ad group, and ad performance data\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Daily/On-demand\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2532\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2435\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth2952\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 ConversionUploadService\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Upload offline conversions (demo bookings, purchases)\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Real-time\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2532\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2435\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth2952\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 CampaignService\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Read campaign settings and status\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Daily\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2532\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2435\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth2952\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 CustomerService\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Retrieve account information\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 On startup\cell \lastrow\row
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 4.2 Data Flow Diagram\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f2\b0\fs20\fsmilli10200 \cf2 \uc0\u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488 \
+\uc0\u9474                     AGENTSS ADS COMMAND CENTER                   \u9474 \
+\uc0\u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496 \
+                              \uc0\u9474 \
+                              \uc0\u9474  OAuth 2.0 Authentication\
+                              \uc0\u9474  (Refresh Token Flow)\
+                              \uc0\u9660 \
+\uc0\u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488 \
+\uc0\u9474                       GOOGLE ADS API v18                         \u9474 \
+\uc0\u9500 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9508 \
+\uc0\u9474                                                                  \u9474 \
+\uc0\u9474   \u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488     \u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488     \u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488  \u9474 \
+\uc0\u9474   \u9474  GoogleAdsService\u9474     \u9474 ConversionUpload \u9474     \u9474  Campaign   \u9474  \u9474 \
+\uc0\u9474   \u9474                  \u9474     \u9474     Service      \u9474     \u9474   Service   \u9474  \u9474 \
+\uc0\u9474   \u9474  - Search queries\u9474     \u9474                  \u9474     \u9474             \u9474  \u9474 \
+\uc0\u9474   \u9474  - GAQL support  \u9474     \u9474  - Click conv.   \u9474     \u9474  - Status   \u9474  \u9474 \
+\uc0\u9474   \u9474  - Reporting     \u9474     \u9474  - Call conv.    \u9474     \u9474  - Settings \u9474  \u9474 \
+\uc0\u9474   \u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496     \u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496     \u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496  \u9474 \
+\uc0\u9474                                                                  \u9474 \
+\uc0\u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496 \
+                              \uc0\u9474 \
+                              \uc0\u9660 \
+\uc0\u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488 \
+\uc0\u9474                     GOOGLE ADS ACCOUNT                           \u9474 \
+\uc0\u9474                   Customer ID: 901-172-6337                      \u9474 \
+\uc0\u9474                   (Under MCC: 983-707-4158)                      \u9474 \
+\uc0\u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496 
+\f3\fs26 \
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 4.3 Authentication Method\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f1\b0\fs24 \cf2 We use OAuth 2.0 with offline refresh tokens:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\parhyphenfactor20\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Initial authorization via Google OAuth consent screen\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Store refresh token securely in environment variables\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Exchange refresh token for access token on each API session\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Access token used for API calls (1-hour validity)\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f0\b \cf2 Security measures:
+\f1\b0  - Refresh tokens stored in encrypted environment variables - Never committed to version control (.gitignore) - Access limited to authorized team members only\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 5. Feature Specifications\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 5.1 Campaign Performance Dashboard\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Purpose:
+\f1\b0  Display real-time campaign metrics in unified view\
+
+\f0\b API Calls:
+\f1\b0 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f4\b\fs20\fsmilli10200 \cf4 \strokec4 SELECT
+\f2\b0 \cf2 \strokec2 \
+  campaign.name,\
+  campaign.status,\
+  metrics.impressions,\
+  metrics.clicks,\
+  metrics.cost_micros,\
+  metrics.conversions,\
+  metrics.conversions_value\
+
+\f4\b \cf4 \strokec4 FROM
+\f2\b0 \cf2 \strokec2  campaign\
+
+\f4\b \cf4 \strokec4 WHERE
+\f2\b0 \cf2 \strokec2  segments.\cf5 \strokec5 date\cf2 \strokec2  DURING LAST_30_DAYS
+\f3\fs26 \
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs24 \cf2 Frequency:
+\f1\b0  On-demand (user-initiated) + daily automated sync\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 5.2 Offline Conversion Upload\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Purpose:
+\f1\b0  Send conversion data from our CRM to Google Ads for optimization\
+
+\f0\b Use Case:
+\f1\b0  When a user from a Google Ad clicks through and later: - Books a demo (conversion) - Becomes a paying customer (conversion with value)\
+
+\f0\b Data Flow:
+\f1\b0  1. User clicks Google Ad \uc0\u8594  lands on agentss.ai 2. GCLID captured and stored with user record 3. User books demo or purchases subscription 4. Conversion sent to Google Ads API with GCLID\
+
+\f0\b API Call Example:
+\f1\b0 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f5\i\fs20\fsmilli10200 \cf6 \strokec6 // ConversionUploadService
+\f2\i0 \cf2 \strokec2 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf7 \strokec7 uploadClickConversions\cf2 \strokec2 (\{\
+  \cf5 \strokec5 customerId\cf8 \strokec8 :\cf2 \strokec2  \cf9 \strokec9 "9011726337"\cf8 \strokec8 ,\cf2 \strokec2 \
+  \cf5 \strokec5 conversions\cf8 \strokec8 :\cf2 \strokec2  [\{\
+    \cf5 \strokec5 gclid\cf8 \strokec8 :\cf2 \strokec2  \cf9 \strokec9 "user_gclid_from_click"\cf8 \strokec8 ,\cf2 \strokec2 \
+    \cf5 \strokec5 conversionAction\cf8 \strokec8 :\cf2 \strokec2  \cf9 \strokec9 "customers/9011726337/conversionActions/123456"\cf8 \strokec8 ,\cf2 \strokec2 \
+    \cf5 \strokec5 conversionDateTime\cf8 \strokec8 :\cf2 \strokec2  \cf9 \strokec9 "2026-01-05 12:00:00-05:00"\cf8 \strokec8 ,\cf2 \strokec2 \
+    \cf5 \strokec5 conversionValue\cf8 \strokec8 :\cf2 \strokec2  \cf10 \strokec10 99.00\cf8 \strokec8 ,\cf2 \strokec2 \
+    \cf5 \strokec5 currencyCode\cf8 \strokec8 :\cf2 \strokec2  \cf9 \strokec9 "USD"\cf2 \strokec2 \
+  \}]\
+\})
+\f3\fs26 \
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 5.3 Automated Reporting\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Purpose:
+\f1\b0  Generate weekly performance summaries\
+
+\f0\b Frequency:
+\f1\b0  Weekly (Sunday midnight)\
+
+\f0\b Output:
+\f1\b0  Email report to marketing team with key metrics\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 6. Rate Limiting & Best Practices\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 6.1 Request Volume Estimates\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2012\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clmrg \clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Operation\cell 
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+\cf2 Estimated Daily Volume\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2012\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clmrg \clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1\b0 \cf2 Campaign queries\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 50-100 requests\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2012\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clmrg \clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Conversion uploads\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 10-50 requests\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2012\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clmrg \clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Account info queries\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 5-10 requests\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2012\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clmrg \clvertalc \clshdrawnil \clwWidth2484\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0\b \cf2 Total
+\f1\b0 \cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0\b \cf2 ~150 requests/day
+\f1\b0 \cell 
+\pard\intbl\itap1\cell \lastrow\row
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 6.2 Rate Limit Compliance\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\parhyphenfactor20\partightenfactor0
+\ls3\ilvl0
+\f1\b0\fs24 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Implement exponential backoff for rate limit errors\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Cache campaign data locally (15-minute TTL)\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Batch conversion uploads where possible\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Use pageToken for paginated results\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 6.3 Error Handling\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\parhyphenfactor20\partightenfactor0
+\ls4\ilvl0
+\f1\b0\fs24 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Log all API errors with full context\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Retry transient errors (5xx, RESOURCE_EXHAUSTED)\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Alert on authentication failures\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Queue failed conversions for retry\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 7. Data Storage & Privacy\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 7.1 Data Stored\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1753\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth1026\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Data Type\cell 
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+\cf2 Storage Location\cell 
+\pard\intbl\itap1\pardeftab720\qc\parhyphenfactor20\partightenfactor0
+\cf2 Retention\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1753\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth1026\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1\b0 \cf2 Campaign metrics\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Local database\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 90 days\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1753\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth1026\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Conversion events\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Local database\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 1 year\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth1780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth1753\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth1026\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt30 \clpadl120 \clpadb60 \clpadr120 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 API credentials\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Environment vars\cell 
+\pard\intbl\itap1\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf2 Permanent\cell \lastrow\row
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 7.2 Privacy Compliance\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\parhyphenfactor20\partightenfactor0
+\ls5\ilvl0
+\f1\b0\fs24 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No PII stored from Google Ads data\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Conversion data uses GCLIDs only (no email/phone)\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Data access restricted to authorized personnel\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Compliant with Google Ads data policies\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 8. Technical Architecture\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 8.1 Technology Stack\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\parhyphenfactor20\partightenfactor0
+\ls6\ilvl0
+\fs24 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Language:
+\f1\b0  JavaScript (Node.js)\
+\ls6\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 API Library:
+\f1\b0  google-ads-api (npm package)\
+\ls6\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Authentication:
+\f1\b0  googleapis OAuth2 client\
+\ls6\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Data Storage:
+\f1\b0  PostgreSQL (for caching)\
+\ls6\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hosting:
+\f1\b0  Internal servers / Vercel\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 8.2 Code Structure\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f2\b0\fs20\fsmilli10200 \cf2 agentss-ads-command-center/\
+\uc0\u9500 \u9472 \u9472  .env                    # API credentials (not in git)\
+\uc0\u9500 \u9472 \u9472  google-ads/\
+\uc0\u9474    \u9500 \u9472 \u9472  api.sh             # Shell helper for GAQL queries\
+\uc0\u9474    \u9500 \u9472 \u9472  list-campaigns.sh  # Campaign listing script\
+\uc0\u9474    \u9492 \u9472 \u9472  send-conversion.sh # Conversion upload script\
+\uc0\u9500 \u9472 \u9472  command-center/\
+\uc0\u9474    \u9492 \u9472 \u9472  src/\
+\uc0\u9474        \u9492 \u9472 \u9472  platforms/\
+\uc0\u9474            \u9492 \u9472 \u9472  google.js  # Google Ads API client\
+\uc0\u9492 \u9472 \u9472  package.json
+\f3\fs26 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 9. Compliance & Terms\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\fs28 \cf2 9.1 Terms Acknowledgment\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f1\b0\fs24 \cf2 We acknowledge and agree to: - Google Ads API Terms and Conditions - Google Ads API Rate Limits - Required Minimum Functionality (RMF) - Data handling and privacy requirements\
+\pard\pardeftab720\sa280\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs28 \cf2 9.2 Use Case Compliance\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f1\b0\fs24 \cf2 Our use case falls under: - 
+\f0\b Internal Tool:
+\f1\b0  Used by our own marketing team - 
+\f0\b Conversion Tracking:
+\f1\b0  Uploading our own conversion data - 
+\f0\b Reporting:
+\f1\b0  Generating reports for our own campaigns\
+We are NOT: - Building an agency tool for clients - Reselling API access - Automating ad creation at scale\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\parhyphenfactor20\partightenfactor0
+
+\f0\b\fs36 \cf2 \strokec2 10. Contact Information\
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\fs24 \cf2 Company:
+\f1\b0  Agentss AI 
+\f0\b Primary Contact:
+\f1\b0  Eimri Bar 
+\f0\b Email:
+\f1\b0  eimrib@yess.ai 
+\f0\b Website:
+\f1\b0  https://agentss.ai\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa240\parhyphenfactor20\partightenfactor0
+
+\f6\i \cf2 \strokec2 Document prepared for Google Ads API Token Application
+\f1\i0  
+\f6\i January 2026
+\f1\i0 \
+}

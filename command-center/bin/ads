@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+/**
+ * Herolings Ads Command Center CLI
+ *
+ * This is the global CLI entry point.
+ * Install globally with: npm link
+ */
+
+import '../src/index.js';
